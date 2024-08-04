@@ -7,7 +7,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 dotenv.config({});
 
- 
+const app = express();
+
 const PORT = process.env.PORT || 5000;
 
 // middleware
@@ -25,8 +26,7 @@ app.use(cors(corsOption));
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/message",messageRoute);
  
-
-server.listen(PORT, ()=>{
+app.listen(8080, ()=>{
     connectDB();
-    console.log(`Server listen at prot ${PORT}`);
+    console.log(`Server listen at port ${PORT}`);
 });
