@@ -1,14 +1,15 @@
-import express from "express"; 
+// const express = require('express')// method-1
+import express from "express"; // method-2
 import dotenv from "dotenv"; 
 import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { app,server } from "./socket/socket.js";
 dotenv.config({});
 
-const app = express();
-
+ 
 const PORT = process.env.PORT || 5000;
 
 // middleware
@@ -26,7 +27,8 @@ app.use(cors(corsOption));
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/message",messageRoute);
  
-app.listen(8080, ()=>{
+
+server.listen(8080, ()=>{
     connectDB();
-    console.log(`Server listen at port ${PORT}`);
+    console.log(`Server listen at prot ${PORT}`);
 });
