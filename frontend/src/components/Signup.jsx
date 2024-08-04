@@ -43,9 +43,9 @@ const Signup = () => {
     })
   }
   return (
-    <div className="min-w-96 mx-auto ">
+    <div className="min-w-96 mx-auto">
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100'>
-        <h1 className='text-3xl font-bold text-center '>Signup</h1>
+        <h1 className='text-3xl font-bold text-center'>Signup</h1>
         <form onSubmit={onSubmitHandler} action="">
           <div>
             <label className='label p-2'>
@@ -98,6 +98,7 @@ const Signup = () => {
                 type="checkbox"
                 checked={user.gender === "male"}
                 onChange={() => handleCheckbox("male")}
+                defaultChecked
                 className="checkbox mx-2" />
             </div>
             <div className='flex items-center'>
@@ -106,12 +107,13 @@ const Signup = () => {
                 type="checkbox"
                 checked={user.gender === "female"}
                 onChange={() => handleCheckbox("female")}
+                defaultChecked
                 className="checkbox mx-2" />
             </div>
           </div>
           <p className='text-center my-2'>Already have an account? <Link to="/login"> login </Link></p>
           <div>
-            <button type='submit' className='btn btn-block btn-sm mt-2 border border-slate-700'>Signup</button>
+            <button type='submit' className='btn btn-block btn-sm mt-2 border border-slate-700'>Singup</button>
           </div>
         </form>
       </div>
@@ -119,4 +121,4 @@ const Signup = () => {
   )
 }
 
-export default Signup;
+export default Signup
