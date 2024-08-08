@@ -39,16 +39,16 @@ const Sidebar = () => {
         }
     }
     return (
-        <div className='border-r border-slate-500 p-4 flex flex-col'>
+        <div className=' border-r border-slate-500 p-4 flex flex-col '>
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
                 <input
                     value={search}
                     onChange={(e)=>setSearch(e.target.value)}
-                    className='input input-bordered rounded-md' type="text"
+                    className='input input-bordered rounded-md sm:w-48 w-36' type="text"
                     placeholder='Search...'
                 />
-                <button type='submit' className='btn bg-zinc-700 text-white'>
-                    <BiSearchAlt2 className='w-6 h-6 outline-none'/>
+                <button type='submit' className='btn  bg-zinc-700 text-white'>
+                    <BiSearchAlt2 className='sm:w-6 w-4 h-6 outline-none'/>
                 </button>
             </form>
             <div className="divider px-3"></div> 
