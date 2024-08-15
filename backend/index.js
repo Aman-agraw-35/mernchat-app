@@ -29,5 +29,5 @@ app.use("/api/v1/message",messageRoute);
 
 server.listen(8080, ()=>{
     connectDB();
-    console.log("Server listen at port ${PORT}");
+    console.log("Server listen at port 8080");
 });
