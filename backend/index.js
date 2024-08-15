@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
+app.options('*', cors()); // Enable pre-flight requests for all routes
+
 const corsOption={
     origin:'https://mernchat-app-beryl.vercel.app',
     credentials:true
