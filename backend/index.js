@@ -17,6 +17,8 @@ app.use(express.json());
 app.use(cookieParser());
 const corsOption={
     origin:'https://mernchat-app-beryl.vercel.app',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
     credentials:true
 };
 app.use(cors(corsOption)); 
