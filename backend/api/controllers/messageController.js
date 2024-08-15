@@ -4,7 +4,7 @@ import { getReceiverSocketId, io } from "../socket/socket.js";
 const corsMiddleware = (handler) => {
     return async (req, res) => {
         res.setHeader('Access-Control-Allow-Origin', 'https://mernchat-app-beryl.vercel.app');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     
         if (req.method === 'OPTIONS') {

@@ -1,6 +1,21 @@
 import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+const corsMiddleware = (handler) => {
+    return async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', 'https://mernchat-app-beryl.vercel.app');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    
+        if (req.method === 'OPTIONS') {
+            res.status(200).end();
+            return;
+        }
+
+        return handler(req, res);
+    };
+};
+
 
 export const register = corsMiddleware(async  (req, res) => {
     try {
