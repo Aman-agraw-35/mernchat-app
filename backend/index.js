@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv"; 
-import connectDB from "./config/database.js";
-import userRoute from "./routes/userRoute.js";
-import messageRoute from "./routes/messageRoute.js";
+import connectDB from "./api/config/database.js";
+import userRoute from "./api/routes/userRoute.js";
+import messageRoute from "./api/routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { app,server } from "./socket/socket.js";
+import { app,server } from "./api/socket/socket.js";
 dotenv.config({});
 
  
