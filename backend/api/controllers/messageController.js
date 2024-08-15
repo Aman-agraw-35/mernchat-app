@@ -1,8 +1,22 @@
 import { Conversation } from "../models/conversationModel.js";
 import { Message } from "../models/messageModel.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
+const corsMiddleware = (handler) => {
+    return async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', 'https://mernchat-app-beryl.vercel.app');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    
+        if (req.method === 'OPTIONS') {
+            res.status(200).end();
+            return;
+        }
 
-export const sendMessage = async (req,res) => {
+        return handler(req, res);
+    };
+};
+
+export const sendMessage = corsMiddleware( async (req,res) => {
     try {
         const senderId = req.id;
         const receiverId = req.params.id;
@@ -40,8 +54,8 @@ export const sendMessage = async (req,res) => {
     } catch (error) {
         console.log(error);
     }
-}
-export const getMessage = async (req,res) => {
+} ) ;
+export const getMessage =corsMiddleware(  async (req,res) => {
     try {
         const receiverId = req.params.id;
         const senderId = req.id;
@@ -52,16 +66,5 @@ export const getMessage = async (req,res) => {
     } catch (error) {
         console.log(error);
     }
-}
+});
 
-export default function handler(req, res) {
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'https://mernchat-app-beryl.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-    // Handle preflight requests
-    if (req.method === 'OPTIONS') {
-      res.status(200).end();
-      return;
-    }}
