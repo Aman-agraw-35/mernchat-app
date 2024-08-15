@@ -1,23 +1,8 @@
 import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-const corsMiddleware = (handler) => {
-    return async (req, res) => {
-        res.setHeader('Access-Control-Allow-Origin', 'https://mernchat-app-beryl.vercel.app');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    
-        if (req.method === 'OPTIONS') {
-            res.status(200).end();
-            return;
-        }
 
-        return handler(req, res);
-    };
-};
-
-
-export const register = corsMiddleware(async  (req, res) => {
+export const register = async (req, res) => {
     try {
         const { fullName, username, password, confirmPassword, gender } = req.body;
         if (!fullName || !username || !password || !confirmPassword || !gender) {
@@ -50,8 +35,8 @@ export const register = corsMiddleware(async  (req, res) => {
     } catch (error) {
         console.log(error);
     }
-});
-export const login =corsMiddleware(async  (req, res) => {
+};
+export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         if (!username || !password) {
@@ -87,8 +72,8 @@ export const login =corsMiddleware(async  (req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
-export const logout = corsMiddleware((req, res) => {
+}
+export const logout = (req, res) => {
     try {
         return res.status(200).cookie("token", "", { maxAge: 0 }).json({
             message: "logged out successfully."
@@ -96,8 +81,8 @@ export const logout = corsMiddleware((req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
-export const getOtherUsers = corsMiddleware(async (req, res) => {
+}
+export const getOtherUsers = async (req, res) => {
     try {
         const loggedInUserId = req.id;
         const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
@@ -106,4 +91,4 @@ export const getOtherUsers = corsMiddleware(async (req, res) => {
         console.log(error);
     }
 }
-);
+
