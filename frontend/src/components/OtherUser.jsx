@@ -11,7 +11,7 @@ const OtherUser = ({ user }) => {
     }
     return (
         <>
-            <div onClick={() => selectedUserHandler(user)} className={` ${selectedUser?._id === user?._id ? 'bg-zinc-200 text-black' : 'text-white'} flex gap-2 hover:text-black items-center hover:bg-zinc-200 rounded p-2 cursor-pointer`}>
+            <div onClick={() => selectedUserHandler(user)} className={` ${selectedUser?._id === user?._id ? 'bg-zinc-200 text-black' : 'text-white'} flex gap-2 hover:text-black items-center hover:bg-zinc-200  p-2 cursor-pointer`}>
                 <div className={`avatar ${isOnline ? 'online' : '' }`}>
                     <div className='w-12 rounded-full'>
                         <img src={user?.profilePhoto} alt="user-profile" />
@@ -23,7 +23,7 @@ const OtherUser = ({ user }) => {
                     </div>
                 </div>
             </div>
-            <div className='divider my-0 py-0 h-1'></div>
+            <div className='divider my-0 py-0 h-0 border-[#ffffff55] border-[0.0001px] '></div>
         </>
     )
 }

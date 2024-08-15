@@ -39,7 +39,7 @@ const Sidebar = () => {
         }
     }
     return (
-        <div className=' border-r border-slate-500 p-4 flex flex-col '>
+        <div className=' border-r border-[#ffffff55]   p-4 flex flex-col '>
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
                 <input
                     value={search}
