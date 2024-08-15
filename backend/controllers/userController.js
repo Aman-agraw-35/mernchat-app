@@ -62,12 +62,18 @@ export const login = async (req, res) => {
 
         const token = await jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'strict' }).json({
+        return res.status(200).cookie("token", token, {
+            maxAge: 1 * 24 * 60 * 60 * 1000, 
+            httpOnly: true,
+            sameSite: 'strict', 
+            secure: process.env.NODE_ENV === 'production' 
+        }).json({
             _id: user._id,
             username: user.username,
             fullName: user.fullName,
             profilePhoto: user.profilePhoto
         });
+        
 
     } catch (error) {
         console.log(error);
@@ -75,9 +81,16 @@ export const login = async (req, res) => {
 }
 export const logout = (req, res) => {
     try {
-        return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-            message: "logged out successfully."
-        })
+        return res.status(200).cookie("token", "", {
+            maxAge: 0, // Invalidate the cookie
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: process.env.NODE_ENV === 'production'
+        }).json({
+            message: "Logged out successfully."
+        });
+        
+     
     } catch (error) {
         console.log(error);
     }
