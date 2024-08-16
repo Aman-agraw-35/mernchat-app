@@ -13,4 +13,4 @@ const useGetRealTimeMessage = () => {
         return () => socket?.off("newMessage");
     },[setMessages, messages]);
 };
-export default useGetRealTimeMessage;
+export default useGetRealTimeMessage; 
