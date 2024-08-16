@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv"; 
-import connectDB from "./api/config/database.js";
-import userRoute from "./api/routes/userRoute.js";
-import messageRoute from "./api/routes/messageRoute.js";
+import connectDB from "./config/database.js";
+import userRoute from "./routes/userRoute.js";
+import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { app, server } from "./api/socket/socket.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
@@ -14,9 +14,8 @@ const PORT = process.env.PORT || 5000;
 // Configure CORS
 const corsOptions = {
     origin: 'https://mernchat-app-beryl.vercel.app',
-    credentials: true, // Allow credentials (cookies, headers, etc.)
-    methods: 'GET, POST, PUT, DELETE, OPTIONS',
-    allowedHeaders: 'X-Requested-With, Content-Type, Accept, Authorization'
+    credentials: true, 
+   
 };
 
 // Middleware
