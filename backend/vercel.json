@@ -1,15 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "index.js",
-        "use": "@vercel/node"
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://project-client.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Authorization",
+        "Access-Control-Allow-Credentials": "true"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "index.js"
-      }
-    ]
-  }
+    }
+  ]
+}
