@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv"; 
 import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
@@ -10,7 +9,7 @@ import path from "path" ;
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:'https://chatapp-server-iota.vercel.app',
+    origin:'https://mernchat-app-backend.vercel.app',
     credentials:true
 };
 app.use(cors(corsOption)); 
