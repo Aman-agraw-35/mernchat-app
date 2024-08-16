@@ -5,29 +5,35 @@ import userRoute from "./api/routes/userRoute.js";
 import messageRoute from "./api/routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { app,server } from "./api/socket/socket.js";
-dotenv.config({});
+import { app, server } from "./api/socket/socket.js";
 
- 
+dotenv.config();
+
 const PORT = process.env.PORT || 5000;
 
-// middleware
-app.use(express.urlencoded({extended:true}));
+// Configure CORS
+const corsOptions = {
+    origin: 'https://mernchat-app-beryl.vercel.app',
+    credentials: true, // Allow credentials (cookies, headers, etc.)
+    methods: 'GET, POST, PUT, DELETE, OPTIONS',
+    allowedHeaders: 'X-Requested-With, Content-Type, Accept, Authorization'
+};
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 app.use(cookieParser());
-const corsOption={
-    origin:'https://mernchat-app-beryl.vercel.app',
-    credentials:true
-};
-app.use(cors(corsOption)); 
+app.use(cors(corsOptions)); 
 
+// Handle preflight (OPTIONS) requests
+app.options('*', cors(corsOptions));
 
-// routes
-app.use("/api/v1/user",userRoute); 
-app.use("/api/v1/message",messageRoute);
- 
+// Routes
+app.use("/api/v1/user", userRoute); 
+app.use("/api/v1/message", messageRoute);
 
-server.listen(8080, ()=>{
+// Start server
+server.listen(PORT, () => {
     connectDB();
-    console.log("Server listen at port ${PORT}");
+    console.log(`Server listening at port ${PORT}`);
 });
