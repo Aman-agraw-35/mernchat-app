@@ -11,21 +11,18 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-// Configure CORS
 const corsOptions = {
     origin: 'https://mernchat-app-beryl.vercel.app',
     credentials: true, 
    
 };
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 app.use(cookieParser());
 app.use(cors(corsOptions)); 
 
-// Handle preflight (OPTIONS) requests
-app.options('*', cors(corsOptions));
+
 
 // Routes
 app.use("/api/v1/user", userRoute); 
