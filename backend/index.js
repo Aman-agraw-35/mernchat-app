@@ -6,30 +6,27 @@ import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { app, server } from "./socket/socket.js";
-
-dotenv.config();
-
-const PORT = process.env.PORT || 5000;
-
-const corsOptions = {
-    origin: 'https://mernchat-app-beryl.vercel.app',
-    credentials: true, 
-   
-};
-
-app.use(express.urlencoded({ extended: true }));
+import path from "path" ;
 app.use(express.json()); 
 app.use(cookieParser());
-app.use(cors(corsOptions)); 
+const corsOption={
+    origin:'https://chatapp-server-iota.vercel.app',
+    credentials:true
+};
+app.use(cors(corsOption)); 
+	
+// routes
+app.use("/api/v1/user",userRoute); 
+app.use("/api/v1/message",messageRoute);
+const __dirname = path.resolve();
 
+app.use(express.static(path.join(__dirname,"../frontend/build")));
 
+app.get("*", (req,res)=>{
+     res.sendFile(path.join(__dirname,"../frontend/build/index.html"));
+})
 
-// Routes
-app.use("/api/v1/user", userRoute); 
-app.use("/api/v1/message", messageRoute);
-
-// Start server
-server.listen(PORT, () => {
+server.listen(PORT, ()=>{
     connectDB();
-    console.log(`Server listening at port ${PORT}`);
+    console.log(`Server listen at prot ${PORT}`);
 });
