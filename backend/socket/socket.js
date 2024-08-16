@@ -1,7 +1,7 @@
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
-        origin:['https://chatapp-server-iota.vercel.app'],
+        origin:['https://localhost:3000'],
         methods:['GET', 'POST'],
     },
 });
