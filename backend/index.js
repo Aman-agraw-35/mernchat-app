@@ -25,7 +25,7 @@ app.get("*", (req,res)=>{
      res.sendFile(path.join(__dirname,"../frontend/build/index.html"));
 })
 
-server.listen(8000, ()=>{
+server.listen(8080, ()=>{
     connectDB();
     console.log(`Server listen at port 8000`);
 });
