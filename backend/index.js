@@ -6,11 +6,11 @@ import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { app, server } from "./socket/socket.js";
-import path from "path" ;
+import path from path ;
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:'https://localhost:3000',
+    origin:'https://chatapp-server-iota.vercel.app',
     credentials:true
 };
 app.use(cors(corsOption)); 
