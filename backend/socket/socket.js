@@ -5,7 +5,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
-        origin:['https://mernchat-app-backend.vercel.app'],
+        origin:['https://mernchat-app-pr7h.onrender.com/'],
         methods:['GET', 'POST'],
     },
 });

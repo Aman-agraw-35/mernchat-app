@@ -9,7 +9,7 @@ import path from "path" ;
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:'https://mernchat-app-backend.vercel.app',
+    origin:'https://mernchat-app-pr7h.onrender.com',
     credentials:true
 };
 app.use(cors(corsOption)); 
