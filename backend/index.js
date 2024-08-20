@@ -13,7 +13,8 @@ const corsOption={
     credentials:true
 };
 app.use(cors(corsOption)); 
-	
+	   
+
 // routes
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/message",messageRoute);
