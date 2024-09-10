@@ -49,7 +49,8 @@ const Login = () => {
               value={user.username}
               onChange={(e) => setUser({ ...user, username: e.target.value })}
               className='w-full input input-bordered h-10'
-              type="text"
+              type="text"    
+              
               placeholder='Username' />
           </div>
           <div>
