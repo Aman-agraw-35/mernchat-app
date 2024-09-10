@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
+import deleteRoute from "./routes/deleteRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { app, server } from "./socket/socket.js";
@@ -18,6 +19,7 @@ app.use(cors(corsOption));
 // routes
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/message",messageRoute);
+app.use("/api/v1",deleteRoute);
 const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname,"../frontend/build")));
@@ -28,5 +30,5 @@ app.get("*", (req,res)=>{
 
 server.listen(8080, ()=>{
     connectDB();
-    console.log(`Server listen at port 8000`);
+    console.log(`Server listen at port 8080`);
 });

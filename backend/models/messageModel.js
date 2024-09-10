@@ -14,6 +14,15 @@ const messageModel = new mongoose.Schema({
     message:{
         type:String,
         required:true
+    },
+    isRead:{
+        type:Boolean,
+        default:false
+    },
+    deleted:{
+        type:Boolean,
+        default:false
     }
 },{timestamps:true});
+
 export const Message = mongoose.model("Message", messageModel);

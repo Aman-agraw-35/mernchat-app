@@ -20,7 +20,9 @@ export const sendMessage = async (req,res) => {
         const newMessage = await Message.create({
             senderId,
             receiverId,
-            message
+            message,
+     
+
         });
         if(newMessage){
             gotConversation.messages.push(newMessage._id);

@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
         origin:['https://mernchat-app-pr7h.onrender.com'],
-        methods:['GET', 'POST'],
+        methods:['GET', 'POST' ,'DELETE'],
     },
 });
 
