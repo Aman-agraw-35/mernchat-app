@@ -39,22 +39,22 @@ const Sidebar = () => {
         }
     }
     return (
-        <div className='border-r border-slate-500 p-4 flex flex-col'>
-            <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
+        <div className='border-r md:h-auto h-[40vh] border-slate-500 md:p-4 flex flex-col  md:w-auto w-[100%] '>
+            <form onSubmit={searchSubmitHandler} action="" className='flex items-center md:gap-2  gap-4 justify-center  '>
                 <input
                     value={search}
                     onChange={(e)=>setSearch(e.target.value)}
-                    className='input input-bordered rounded-md' type="text"
+                    className='input input-bordered  rounded-none md:rounded-md w-full' type="text"
                     placeholder='Search...'
                 />
-                <button type='submit' className='btn bg-zinc-700 text-white'>
+                <button type='submit' className='btn md:rounded-md bg-zinc-700 text-white rounded-none   '>
                     <BiSearchAlt2 className='w-6 h-6 outline-none'/>
                 </button>
             </form>
-            <div className="divider px-3"></div> 
+            <div className="md:divider px-3"></div> 
             <OtherUsers/> 
-            <div className='mt-2'>
-                <button onClick={logoutHandler} className='btn btn-sm'>Logout</button>
+            <div className='mt-2 flex justify-center w-full '>
+                <button onClick={logoutHandler} className='btn btn-sm w-full md:rounded-2xl rounded-none md:mb-0 mb-1  '>Logout</button>
             </div>
         </div>
     )
