@@ -13,7 +13,7 @@ const HomePage = () => {
     }
   }, []);
   return (
-    <div className='flex  md:h-[550px] flex-col-reverse md:flex-row rounded-lg overflow-hidden bg-gray-400 md:bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+    <div className='flex  md:h-[550px] flex-col md:flex-row rounded-lg overflow-hidden bg-gray-400 md:bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
       <Sidebar />
       <MessageContainer />
     </div>   
